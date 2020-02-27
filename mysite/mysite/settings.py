@@ -32,9 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'polymorphic',
-    'django.contrib.contenttypes',
     'taggit',
-    'Grade_A.apps.Grade_AConfig',
+    'Grade_A',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
