@@ -98,9 +98,6 @@ class Products(models.Model):
         (HYBRID, 'Hybrid')]
 
 
-    
-
-    id          = models.AutoField(primary_key=True)
     name        = models.CharField(max_length = 30)
     catagory    = models.CharField(max_length = 30, choices=Catagories_Choices)
     variety     = models.CharField(max_length= 2, choices=Variety_choices)
@@ -112,10 +109,10 @@ class Products(models.Model):
 
     objects =models.Manager()
 
-    Review = models.ForeignKey('Review', on_delete=models.CASCADE, null=True, default ="NA")
+    Review = models.ForeignKey('Review', on_delete=models.CASCADE,blank=True ,null=True)
     tags = TaggableManager()
 
-
+    
 
     def average_rating(self):
         all_ratings = map(lambda x: x.rating, self.review_set.all())
@@ -123,8 +120,11 @@ class Products(models.Model):
         
 
     def __str__(self):
-        return (self.name,self.price)
-
+        return self.name,self.price
+    class Meta:
+        indexes =[
+            models.Index(fields=['name'])
+        ]
 #///////////////////////----Review-Model---/////////////////////////////////////
 
 

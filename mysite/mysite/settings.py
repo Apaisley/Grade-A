@@ -31,7 +31,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'polymorphic',
     'taggit',
     'Grade_A',
     'django.contrib.admin',

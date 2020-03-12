@@ -8,7 +8,13 @@ from .models import Review
 import datetime
 
 def index(request):
-    return HttpResponse(" Welcome to the Grade A website")
+    products = Products.objects.all()
+    product_names = list()
+    
+    for product in products:
+        product_names.append(product.name)
+    response_html ='<br>'.join(product_names)
+    return HttpResponse(" Welcome to the Grade A website"+response_html)
 
 
 
